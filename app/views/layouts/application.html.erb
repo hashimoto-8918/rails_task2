@@ -11,6 +11,32 @@
   </head>
 
   <body>
+    <header>
+     <% if user_signed_in? %>
+       <%= current_user.name %>
+     <% if current_user.image.present? %>
+       <%= image_tag current_user.image.url, size: '100x100' %>
+     <% else %>
+       <%= image_tag "https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg", size: '100x100' %>
+     <% end %>
+      <ul>
+        <li><%= link_to "ルーム登録", new_room_path %></li>
+        <li><%= link_to "登録済みルーム一覧", rooms_path %></li>
+        <li><%= link_to "設定", pages_profile_path %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path %></li>
+      </ul>
+     <% else %>
+      <ul>
+        <li><%= link_to "ログイン", user_session_path %></li>
+        <li><%= link_to "登録する", new_user_registration_path %></li>
+      </ul>
+     <% end %>
+    </header>
+
     <%= yield %>
+
+    <footer>
+      <p>© 2020 POTEPAN.INC.</p>
+    </footer>
   </body>
 </html>

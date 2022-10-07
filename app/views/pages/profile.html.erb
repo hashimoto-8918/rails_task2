@@ -1,0 +1,18 @@
+<h2>プロフィール</h2>
+
+ <% if @user.image? %>
+   <%= image_tag @user.image.url, size: '100x100' %>
+ <% else %>
+   <%= image_tag "https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg", size: '200x200' %>
+ <% end %>
+</div>
+<h3>ユーザー名</h3>
+   <%= @user.name %>
+<h3>自己紹介</h3>
+   <%= @user.introduction %>
+<h3>メールアドレス</h3>
+   <%= @user.email %>
+<h3>パスワード</h3>
+   <p>******</p>
+
+<%= link_to "編集する", edit_user_registration_path %>

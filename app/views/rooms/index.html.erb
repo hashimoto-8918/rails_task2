@@ -1,0 +1,27 @@
+<h2>登録ルーム一覧</h2>
+
+<table>
+  <thead>
+   <tr>
+    <th>画像</th>
+    <th>名前</th>
+    <th>紹介</th>
+    <th>料金</th>
+    <th>場所</th>
+    <th>作成日</th>
+   </tr>
+  </thead>
+
+  <tbody>
+   <tr>
+   <% @rooms.each do |room| %>
+    <td><%= image_tag room.room_image.url, size: '100x100' %></td>
+    <td><%= room.room_name %></td>
+    <td><%= room.room_introduction %></td>
+    <td><%= room.room_price %></td>
+    <td><%= room.room_area %></td>
+    <td><%= room.created_at.to_s(:datetime_jp) %></td>
+   </tr>
+   <% end %>
+ </tbody>
+</table>
