@@ -17,6 +17,10 @@ class RoomsController < ApplicationController
     end
   end
   def search
-    @rooms = Room.all
+    if params[:area]
+      @rooms = Room.where(["room_area like?", "%#{params[:area]}%"])
+    elsif params[:keyword]
+      @rooms = Room.where(["room_name like? or room_area like? or room_introduction like?" , "%#{params[:keyword]}%", "%#{params[:keyword]}%", "%#{params[:keyword]}%" ])
+    end
   end
 end

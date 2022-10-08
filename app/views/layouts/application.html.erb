@@ -12,6 +12,15 @@
 
   <body>
     <header>
+     <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png"), pages_top_path %>
+     <label>エリア</label>
+      <%= form_with url: rooms_search_path, method: :get do |f| %>
+      <%= f.text_field :area %>
+      <% end %>
+     <label>キーワード</label>
+      <%= form_with url: rooms_search_path, method: :get do |f| %>
+      <%= f.text_field :keyword %>
+      <% end %>
      <% if user_signed_in? %>
        <%= current_user.name %>
      <% if current_user.image.present? %>
