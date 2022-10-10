@@ -1,0 +1,56 @@
+<h2>ルーム予約</h2>
+
+<table>
+ <tr>
+   <td><%= image_tag @room.room_image.url, size: '100x100' %></td>
+ </tr>
+ <tr>
+   <td><%= @room.room_name %></td>
+ </tr>
+ <tr>
+   <td><%= @room.room_introduction %></td>
+ </tr>
+ <tr>
+   <td>¥<%= @room.room_price %>/日</td>
+ </tr>
+ <tr>
+   <td><%= @room.room_area %></td>
+ </tr>
+</table>
+
+ <h2>部屋を予約する</h2>
+
+ <% if @reservation.errors.any? %>
+  <% @reservation.errors.full_messages.each do |message| %>
+    <ul>
+      <li><%= message %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+ <%= form_with model: @reservation, url: reservations_confirm_url, method: :get do |f| %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :room_price, value: @room.room_price %>
+    <table>
+     <tr>
+       <th><%= f.label :start_date ,"開始日" %></th>
+       <td><%= f.date_field :start_date %></td>
+     </tr>
+
+     <tr>
+       <th><%= f.label :end_date ,"終了日" %></th>
+       <td><%= f.date_field :end_date %></td>
+     </tr>
+
+     <tr>
+       <th><%= f.label :number_people ,"人数" %></th>
+       <td><%= f.number_field :number_people %></td>
+     </tr>
+   </table>
+   <div>
+     <ul>
+       <li><%= f.submit "予約確認"%></li>
+     </ul>
+   </div>
+ <% end %>

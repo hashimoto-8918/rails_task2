@@ -1,0 +1,38 @@
+<h2>予約確認画面</h2>
+
+<%= form_with model: @reservation do |f| %>
+  <%= f.hidden_field :start_date, value: @reservation.start_date %>
+  <%= f.hidden_field :end_date, value: @reservation.end_date %>
+  <%= f.hidden_field :number_people, value: @reservation.number_people %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.hidden_field :created_at, value: @reservation.created_at %>
+  <%= f.hidden_field :updated_at, value: @reservation.updated_at %>
+<table>
+  <th>開始</th>
+    <td><%= @reservation.start_date %></td>
+  </tr>
+  <tr>
+    <th>終了日</th>
+    <td><%= @reservation.end_date %></td>
+  </tr>
+  <tr>
+    <th>宿泊日数</th>
+    <td><%= @total_day = (@reservation.end_date - @reservation.start_date).to_i %></td>
+
+  </tr>
+  <tr>
+    <th>人数</th>
+    <td><%= @reservation.number_people %></td>
+  </tr>
+  <tr>
+    <th>合計料金</th>
+    <td><%= @total_price = @reservation.room.room_price * @reservation.number_people * (@reservation.end_date - @reservation.start_date).to_i %></td>
+  </tr>
+</table>
+ <div>
+    <ul>
+      <li><%= f.submit "予約する"%></li>
+      <li><%= link_to "戻る", :back %></li>
+    </ul>
+ </div>
+<% end %>
