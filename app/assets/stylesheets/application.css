@@ -14,9 +14,105 @@
  *= require_self
  */
 
+ body {
+  margin: 0px;
+ }
+
  header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+ }
+ .search_bar {
+  width: 180px;
+  height: 40px;
+ }
+ .header_left {
+   display: flex;
+ }
+ .header_search {
+   display: flex;
+   padding-left: 20px;
+   gap: 10px;
+ }
+ .header_right {
+   display: flex;
+   padding-right: 20px;
+ }
+ .login_image {
+   border-radius: 50px;
+ }
+ .header_account {
+   gap: 10px;
+   padding-top: 20px;
+   padding-bottom: 20px;
+   color: white;
+   display: flex;
+   align-items: center;
+ }
+ ul {
+  list-style-type: none;
+ }
+ .link {
+  color: white;
+  text-decoration: none;
+ }
+
+
+ footer {
+  bottom: 0;
+  width: 100%;
+  height: 180px;
+  margin-top: 64px;
+  padding-top: 90px;
+  background-color: #111;
+  box-sizing: border-box;
+  color: #fff;
+  text-align: center;
+ }
+ .form_image {
+  background-image: url("https://presite-potepancamp-rails-02.herokuapp.com/assets/img_cover_top.jpg");
+  background-size: cover;
+  height: 650px;
+ }
+
+ .form_top {
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  height: 500px;
+ }
+ .form_search {
+  border-radius: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: white;
+  padding: 24px;
+ }
+
+
+ .area_search {
+  height: 30px;
+  width: 300px;
+ }
+ .area_search_button {
+  height: 30px;
+  width: 100px;
+ }
+ .area {
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+  text-align: center;
+ }
+
+
+ .table_new {
+  width: 600px;
+ }
+ table {
+  width: 100%;
  }
  table th {
     background-color: #fbc25b;
@@ -26,8 +122,16 @@
  table td {
     background-color: #f9ecd5;
     padding: 10px 20px;
+    text-align: center;
  }
  .notice {
    background-color: #ccf;
    padding: 5px;
+ }
+
+ .profile {
+  margin-left: 200px;
+ }
+ .profile_new {
+  margin-left: 200px;
  }

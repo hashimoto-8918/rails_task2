@@ -11,13 +11,13 @@ class ReservationsController < ApplicationController
   end
 
   def confirm
-    @reservation = Reservation.new(params.require(:reservation).permit(:start_date, :end_date, :number_people, :room_id, :user_id))
+    @reservation = Reservation.new(reservation_params)
     @room = Room.find_by(id: @reservation.room_id)
     render :new if @reservation.invalid?
   end
 
   def create
-    @reservation = Reservation.new(params.require(:reservation).permit(:start_date, :end_date, :number_people, :room_id, :user_id))
+    @reservation = Reservation.new(reservation_params)
     @reservation.user_id = current_user.id
     if params[:back].present?
       render :new
@@ -33,4 +33,11 @@ class ReservationsController < ApplicationController
     flash[:notice] = "スケジュールを削除しました"
     redirect_to :reservations
   end
+
+  private
+
+  def reservation_params
+    params.require(:reservation).permit(:start_date, :end_date, :number_people, :room_id, :user_id)
+  end
+
 end

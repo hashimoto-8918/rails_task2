@@ -1,6 +1,6 @@
 <h2>ルーム予約</h2>
 
-<table>
+<table class = "table_new">
  <tr>
    <td><%= image_tag @room.room_image.url, size: '100x100' %></td>
  </tr>
@@ -32,7 +32,7 @@
   <%= f.hidden_field :room_id, value: @room.id %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :room_price, value: @room.room_price %>
-    <table>
+    <table class = "table_new">
      <tr>
        <th><%= f.label :start_date ,"開始日" %></th>
        <td><%= f.date_field :start_date %></td>

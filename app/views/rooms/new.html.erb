@@ -9,7 +9,7 @@
 <% end %>
 
 <%= form_with model: @room do |f| %>
-  <table>
+  <table class = "table_new">
     <tr>
       <th><%= f.label :room_name ,"ルーム名" %></th>
       <td><%= f.text_field :room_name %></td>
