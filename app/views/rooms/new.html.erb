@@ -1,12 +1,6 @@
 <h2>ルーム登録</h2>
 
-<% if @room.errors.any? %>
-  <% @room.errors.full_messages.each do |message| %>
-    <ul>
-      <li><%= message %></li>
-    </ul>
-  <% end %>
-<% end %>
+<%= render "shared/error", obj: @room %>
 
 <%= form_with model: @room do |f| %>
   <table class = "table_new">

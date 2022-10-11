@@ -20,13 +20,7 @@
 
  <h2>部屋を予約する</h2>
 
- <% if @reservation.errors.any? %>
-  <% @reservation.errors.full_messages.each do |message| %>
-    <ul>
-      <li><%= message %></li>
-    </ul>
-  <% end %>
-<% end %>
+ <%= render "shared/error", obj: @reservation %>
 
  <%= form_with model: @reservation, url: reservations_confirm_url, method: :get do |f| %>
   <%= f.hidden_field :room_id, value: @room.id %>

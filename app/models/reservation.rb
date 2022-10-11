@@ -3,6 +3,7 @@ class Reservation < ApplicationRecord
     validates :end_date, presence: true
     validates :number_people, presence: true
 
+    validate :minus_number
     validate :start_end_check
     validate :start_check
 
@@ -10,6 +11,10 @@ class Reservation < ApplicationRecord
     belongs_to :user
 
     private
+
+    def minus_number
+      errors.add(:number_people, "は一人以上にしてください。") if number_people&. <= 0
+    end
 
     def start_end_check
       return if start_date.blank? || end_date.blank?

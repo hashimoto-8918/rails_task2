@@ -7,7 +7,7 @@
   <%= f.hidden_field :room_id, value: @room.id %>
   <%= f.hidden_field :created_at, value: @reservation.created_at %>
   <%= f.hidden_field :updated_at, value: @reservation.updated_at %>
-<table>
+<table class = "table_new">
   <th>開始</th>
     <td><%= @reservation.start_date %></td>
   </tr>
