@@ -11,6 +11,52 @@
   </head>
 
   <body>
+   <header>
+    <div class ="header_left">
+     <div class ="header_logo">
+      <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png"), pages_top_path %>
+     </div>
+     <div class ="header_search">
+      <%= form_with url: rooms_search_path, method: :get do |f| %>
+      <%= f.text_field :area, placeholder: "エリア", class: "search_bar"%>
+      <% end %>
+      <%= form_with url: rooms_search_path, method: :get do |f| %>
+      <%= f.text_field :keyword, placeholder: "キーワード", class: "search_bar"%>
+      <% end %>
+     </div>
+    </div>
+    <div class="header_right">
+     <div class ="header_account">
+      <% if user_signed_in? %>
+        <%= current_user.name %>
+       <% if current_user.image.present? %>
+        <%= image_tag current_user.image.url, size: '100x100', class: "login_image"%>
+       <% else %>
+        <%= image_tag "https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon-9263fc59c414b7228d256fc178dcb22183561357950a68f5ad086ba7ee054974.jpg", class: "login_image", size: '100x100' %>
+       <% end %>
+     </div>
+     <div class ="header_list">
+      <ul>
+        <li><%= link_to "ルーム登録", new_room_path, class: "link"%></li>
+        <li><%= link_to "登録済みルーム一覧", rooms_path, class: "link" %></li>
+        <li><%= link_to "予約済みルーム一覧", reservations_path, class: "link" %></li>
+        <li><%= link_to "設定", pages_profile_path, class: "link" %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, class: "link" %></li>
+      </ul>
+     <% else %>
+      <ul>
+        <li><%= link_to "ログイン", user_session_path, class: "link" %></li>
+        <li><%= link_to "登録する", new_user_registration_path, class: "link" %></li>
+      </ul>
+     </div>
+     <% end %>
+    </div>
+   </header>
+
     <%= yield %>
+
+    <footer>
+      <p>© 2020 POTEPAN.INC.</p>
+    </footer>
   </body>
 </html>

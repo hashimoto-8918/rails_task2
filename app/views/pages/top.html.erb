@@ -1,0 +1,35 @@
+<% if flash[:notice] %>
+   <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+<div class = "form_image">
+ <div class ="form_top">
+  <div class = "form_search">
+   <h3>Potepan Shareでまだ体験したことないのない体験をしよう</h3>
+   <label>エリア</label>
+    <%= form_with url: rooms_search_path, method: :get do |f| %>
+    <%= f.text_field :area, class: "area_search" %>
+    <%= f.submit "探す", class: "area_search_button" %>
+    <% end %>
+  </div>
+ </div>
+</div>
+
+<h2>おすすめエリア</h2>
+<div class ="area">
+  <div class ="area_image">
+    <p>東京</p>
+    <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/img_tokyo.jpg", size: '200x300'), rooms_search_path(area: "東京") %>
+  </div>
+  <div class ="area_image">
+    <p>大阪</p>
+    <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/img_osaka.jpg", size: '200x300'), rooms_search_path(area: "大阪") %>
+  </div>
+  <div class ="area_image">
+    <p>京都</p>
+    <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/img_kyoto.jpg", size: '200x300'), rooms_search_path(area: "京都") %>
+  </div>
+  <div class ="area_image">
+    <p>札幌</p>
+    <%= link_to image_tag("https://presite-potepancamp-rails-02.herokuapp.com/assets/img_sapporo.jpg", size: '200x300'), rooms_search_path(area: "札幌") %>
+  </div>
+</div>
