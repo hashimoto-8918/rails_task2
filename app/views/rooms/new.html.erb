@@ -3,6 +3,7 @@
 <%= render "shared/error", obj: @room %>
 
 <%= form_with model: @room do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <table class = "table_new">
     <tr>
       <th><%= f.label :room_name ,"ルーム名" %></th>

@@ -7,7 +7,8 @@ class Room < ApplicationRecord
 
     validate :minus_price
 
-    has_many :reservations
+    has_many :reservations, dependent: :destroy
+    belongs_to :user
 
     mount_uploader :room_image, ImageUploader
 

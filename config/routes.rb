@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'pages/top'
   get "pages/profile", to: "pages#profile"
 
-  resources :rooms, only: [:index, :new, :create]
+  resources :rooms, only: [:index, :new, :create, :destroy]
   get 'rooms/search'
 
   resources :reservations, only: [:index, :create, :destroy]
